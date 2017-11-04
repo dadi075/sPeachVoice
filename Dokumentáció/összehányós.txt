@@ -1,0 +1,6 @@
+Specifikációk:
+-csoportos hang beszélgetés
+-privát szöveges chat
+-felhasználók egyéni beállításai
+-mindenhez bejelentkezés szükséges
+-admin parancsok(ban, kick, mute)

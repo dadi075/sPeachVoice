@@ -1,0 +1,11 @@
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\bin\Debug\sPeachVoice.exe.config
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\bin\Debug\sPeachVoice.exe
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\bin\Debug\sPeachVoice.pdb
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.logInForm.resources
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.Properties.Resources.resources
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.csproj.GenerateResource.Cache
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.exe
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.pdb
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.registerForm.resources

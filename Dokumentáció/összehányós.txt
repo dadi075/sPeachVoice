@@ -4,3 +4,8 @@ Specifikációk:
 -felhasználók egyéni beállításai
 -mindenhez bejelentkezés szükséges
 -admin parancsok(ban, kick, mute)
+
+TODO:
+-class diagram
+-szekvencia diagram
+-design látványterv

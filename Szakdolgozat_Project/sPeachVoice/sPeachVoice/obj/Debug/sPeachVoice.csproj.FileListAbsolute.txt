@@ -9,3 +9,4 @@ C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\
 C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.exe
 C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.pdb
 C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.registerForm.resources
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.mainForm.resources

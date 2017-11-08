@@ -6,6 +6,5 @@ Specifikációk:
 -admin parancsok(ban, kick, mute)
 
 TODO:
--class diagram
--szekvencia diagram
--design látványterv
+-class diagram kiegészítés + dokumentáció
+-esetleges kiegészítések a dokumentáció többi részét

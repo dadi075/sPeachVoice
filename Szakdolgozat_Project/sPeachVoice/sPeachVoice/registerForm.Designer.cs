@@ -47,6 +47,7 @@
             this.label1.Size = new System.Drawing.Size(374, 43);
             this.label1.TabIndex = 0;
             this.label1.Text = "Create an account";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
@@ -130,6 +131,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "registerForm";
             this.Text = "Register";
+            this.Click += new System.EventHandler(this.registerForm_Click);
             this.ResumeLayout(false);
             this.PerformLayout();
 

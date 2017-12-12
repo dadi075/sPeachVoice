@@ -16,7 +16,7 @@ namespace sPeachVoice
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new logInForm());
+            Application.Run(new mainForm());
         }
     }
 }

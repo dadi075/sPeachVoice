@@ -31,126 +31,126 @@ namespace sPeachVoice
         {
             //textbox things
 
-            textBox1.Text = "";
-            if (String.IsNullOrEmpty(textBox2.Text))
+            username_text.Text = "";
+            if (String.IsNullOrEmpty(email_text.Text))
             {
-                textBox2.Text = "E-mail";
+                email_text.Text = "E-mail";
             }
-            if (String.IsNullOrEmpty(textBox3.Text))
+            if (String.IsNullOrEmpty(password_text.Text))
             {
-                textBox3.UseSystemPasswordChar = false;
-                textBox3.Text = "Password";
+                password_text.UseSystemPasswordChar = false;
+                password_text.Text = "Password";
             }
-            if (String.IsNullOrEmpty(textBox4.Text))
+            if (String.IsNullOrEmpty(password2_text.Text))
             {
-                textBox4.UseSystemPasswordChar = false;
-                textBox4.Text = "Confirm Password";
+                password2_text.UseSystemPasswordChar = false;
+                password2_text.Text = "Confirm Password";
             }
         }
         //E-mail
         private void textBox2_Click(object sender, EventArgs e)
         {
             //textbox things
-            textBox2.Text = "";
-            if (String.IsNullOrEmpty(textBox1.Text))
+            email_text.Text = "";
+            if (String.IsNullOrEmpty(username_text.Text))
             {
-                textBox1.Text = "Username";
+                username_text.Text = "Username";
             }
-            if (String.IsNullOrEmpty(textBox3.Text))
+            if (String.IsNullOrEmpty(password_text.Text))
             {
-                textBox3.UseSystemPasswordChar = false;
-                textBox3.Text = "Password";
+                password_text.UseSystemPasswordChar = false;
+                password_text.Text = "Password";
             }
-            if (String.IsNullOrEmpty(textBox4.Text))
+            if (String.IsNullOrEmpty(password2_text.Text))
             {
-                textBox4.UseSystemPasswordChar = false;
-                textBox4.Text = "Confirm Password";
+                password2_text.UseSystemPasswordChar = false;
+                password2_text.Text = "Confirm Password";
             }
         }
         //password
         private void textBox3_Click(object sender, EventArgs e)
         {
             //textbox things
-            textBox3.UseSystemPasswordChar = true;
-            textBox3.Text = "";
-            if (String.IsNullOrEmpty(textBox1.Text))
+            password_text.UseSystemPasswordChar = true;
+            password_text.Text = "";
+            if (String.IsNullOrEmpty(username_text.Text))
             {
-                textBox1.Text = "Username";
+                username_text.Text = "Username";
             }
-            if (String.IsNullOrEmpty(textBox2.Text))
+            if (String.IsNullOrEmpty(email_text.Text))
             {
-                textBox2.Text = "E-mail";
+                email_text.Text = "E-mail";
             }
-            if (String.IsNullOrEmpty(textBox4.Text))
+            if (String.IsNullOrEmpty(password2_text.Text))
             {
-                textBox4.UseSystemPasswordChar = false;
-                textBox4.Text = "Confirm Password";
+                password2_text.UseSystemPasswordChar = false;
+                password2_text.Text = "Confirm Password";
             }
         }
         //confirm password
         private void textBox4_Click(object sender, EventArgs e)
         {
             //textbox things
-            textBox4.UseSystemPasswordChar = true;
-            textBox4.Text = "";
-            if (String.IsNullOrEmpty(textBox1.Text))
+            password2_text.UseSystemPasswordChar = true;
+            password2_text.Text = "";
+            if (String.IsNullOrEmpty(username_text.Text))
             {
-                textBox1.Text = "Username";
+                username_text.Text = "Username";
             }
-            if (String.IsNullOrEmpty(textBox2.Text))
+            if (String.IsNullOrEmpty(email_text.Text))
             {
-                textBox2.Text = "E-mail";
+                email_text.Text = "E-mail";
             }
-            if (String.IsNullOrEmpty(textBox3.Text))
+            if (String.IsNullOrEmpty(password_text.Text))
             {
-                textBox3.UseSystemPasswordChar = false;
-                textBox3.Text = "Password";
+                password_text.UseSystemPasswordChar = false;
+                password_text.Text = "Password";
             }
         }
 
         private void registerForm_Click(object sender, EventArgs e)
         {
             //textbox things
-            if (String.IsNullOrEmpty(textBox1.Text))
+            if (String.IsNullOrEmpty(username_text.Text))
             {
-                textBox1.Text = "Username";
+                username_text.Text = "Username";
             }
-            if (String.IsNullOrEmpty(textBox2.Text))
+            if (String.IsNullOrEmpty(email_text.Text))
             {
-                textBox2.Text = "E-mail";
+                email_text.Text = "E-mail";
             }
-            if (String.IsNullOrEmpty(textBox3.Text))
+            if (String.IsNullOrEmpty(password_text.Text))
             {
-                textBox3.UseSystemPasswordChar = false;
-                textBox3.Text = "Password";
+                password_text.UseSystemPasswordChar = false;
+                password_text.Text = "Password";
             }
-            if (String.IsNullOrEmpty(textBox4.Text))
+            if (String.IsNullOrEmpty(password2_text.Text))
             {
-                textBox4.UseSystemPasswordChar = false;
-                textBox4.Text = "Confirm Password";
+                password2_text.UseSystemPasswordChar = false;
+                password2_text.Text = "Confirm Password";
             }
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
             //textbox things
-            if (String.IsNullOrEmpty(textBox1.Text))
+            if (String.IsNullOrEmpty(username_text.Text))
             {
-                textBox1.Text = "Username";
+                username_text.Text = "Username";
             }
-            if (String.IsNullOrEmpty(textBox2.Text))
+            if (String.IsNullOrEmpty(email_text.Text))
             {
-                textBox2.Text = "E-mail";
+                email_text.Text = "E-mail";
             }
-            if (String.IsNullOrEmpty(textBox3.Text))
+            if (String.IsNullOrEmpty(password_text.Text))
             {
-                textBox3.UseSystemPasswordChar = false;
-                textBox3.Text = "Password";
+                password_text.UseSystemPasswordChar = false;
+                password_text.Text = "Password";
             }
-            if (String.IsNullOrEmpty(textBox4.Text))
+            if (String.IsNullOrEmpty(password2_text.Text))
             {
-                textBox4.UseSystemPasswordChar = false;
-                textBox4.Text = "Confirm Password";
+                password2_text.UseSystemPasswordChar = false;
+                password2_text.Text = "Confirm Password";
             }
         }
     }

@@ -33,47 +33,47 @@ namespace sPeachVoice
 
         private void textBox1_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            if (String.IsNullOrEmpty(textBox2.Text))
+            username_text.Text = "";
+            if (String.IsNullOrEmpty(pass_text.Text))
             {
-                textBox2.UseSystemPasswordChar = false;
-                textBox2.Text = "Password";
+                pass_text.UseSystemPasswordChar = false;
+                pass_text.Text = "Password";
             }
         }
 
         private void textBox2_Click(object sender, EventArgs e)
         {
-            textBox2.UseSystemPasswordChar = true;
-            textBox2.Text = "";
-            if (String.IsNullOrEmpty(textBox1.Text))
+            pass_text.UseSystemPasswordChar = true;
+            pass_text.Text = "";
+            if (String.IsNullOrEmpty(username_text.Text))
             {
-                textBox1.Text = "Username";
+                username_text.Text = "Username";
             }
         }
 
         private void logInForm_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBox1.Text))
+            if (String.IsNullOrEmpty(username_text.Text))
             {
-                textBox1.Text = "Username";
+                username_text.Text = "Username";
             }
-            if (String.IsNullOrEmpty(textBox2.Text))
+            if (String.IsNullOrEmpty(pass_text.Text))
             {
-                textBox2.UseSystemPasswordChar = false;
-                textBox2.Text = "Password";
+                pass_text.UseSystemPasswordChar = false;
+                pass_text.Text = "Password";
             }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBox1.Text))
+            if (String.IsNullOrEmpty(username_text.Text))
             {
-                textBox1.Text = "Username";
+                username_text.Text = "Username";
             }
-            if (String.IsNullOrEmpty(textBox2.Text))
+            if (String.IsNullOrEmpty(pass_text.Text))
             {
-                textBox2.UseSystemPasswordChar = false;
-                textBox2.Text = "Password";
+                pass_text.UseSystemPasswordChar = false;
+                pass_text.Text = "Password";
             }
         }
     }

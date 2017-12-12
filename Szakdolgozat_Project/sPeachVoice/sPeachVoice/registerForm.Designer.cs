@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(registerForm));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.username_text = new System.Windows.Forms.TextBox();
+            this.email_text = new System.Windows.Forms.TextBox();
+            this.password_text = new System.Windows.Forms.TextBox();
+            this.password2_text = new System.Windows.Forms.TextBox();
+            this.register_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -49,71 +49,71 @@
             this.label1.Text = "Create an account";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // username_text
             // 
-            this.textBox1.BackColor = System.Drawing.Color.SeaShell;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Lucida Sans", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox1.Location = new System.Drawing.Point(44, 105);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(366, 26);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Username";
-            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
+            this.username_text.BackColor = System.Drawing.Color.SeaShell;
+            this.username_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.username_text.Font = new System.Drawing.Font("Lucida Sans", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username_text.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.username_text.Location = new System.Drawing.Point(44, 105);
+            this.username_text.Name = "username_text";
+            this.username_text.Size = new System.Drawing.Size(366, 26);
+            this.username_text.TabIndex = 1;
+            this.username_text.Text = "Username";
+            this.username_text.Click += new System.EventHandler(this.textBox1_Click);
             // 
-            // textBox2
+            // email_text
             // 
-            this.textBox2.BackColor = System.Drawing.Color.SeaShell;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Lucida Sans", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox2.Location = new System.Drawing.Point(44, 149);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(366, 26);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.Text = "E-mail";
-            this.textBox2.Click += new System.EventHandler(this.textBox2_Click);
+            this.email_text.BackColor = System.Drawing.Color.SeaShell;
+            this.email_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.email_text.Font = new System.Drawing.Font("Lucida Sans", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email_text.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.email_text.Location = new System.Drawing.Point(44, 149);
+            this.email_text.Name = "email_text";
+            this.email_text.Size = new System.Drawing.Size(366, 26);
+            this.email_text.TabIndex = 2;
+            this.email_text.Text = "E-mail";
+            this.email_text.Click += new System.EventHandler(this.textBox2_Click);
             // 
-            // textBox3
+            // password_text
             // 
-            this.textBox3.BackColor = System.Drawing.Color.SeaShell;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Lucida Sans", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox3.Location = new System.Drawing.Point(44, 192);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(366, 26);
-            this.textBox3.TabIndex = 3;
-            this.textBox3.Text = "Password";
-            this.textBox3.Click += new System.EventHandler(this.textBox3_Click);
+            this.password_text.BackColor = System.Drawing.Color.SeaShell;
+            this.password_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.password_text.Font = new System.Drawing.Font("Lucida Sans", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.password_text.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.password_text.Location = new System.Drawing.Point(44, 192);
+            this.password_text.Name = "password_text";
+            this.password_text.Size = new System.Drawing.Size(366, 26);
+            this.password_text.TabIndex = 3;
+            this.password_text.Text = "Password";
+            this.password_text.Click += new System.EventHandler(this.textBox3_Click);
             // 
-            // textBox4
+            // password2_text
             // 
-            this.textBox4.BackColor = System.Drawing.Color.SeaShell;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Lucida Sans", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBox4.Location = new System.Drawing.Point(44, 237);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(366, 26);
-            this.textBox4.TabIndex = 4;
-            this.textBox4.Text = "Confirm Password";
-            this.textBox4.Click += new System.EventHandler(this.textBox4_Click);
+            this.password2_text.BackColor = System.Drawing.Color.SeaShell;
+            this.password2_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.password2_text.Font = new System.Drawing.Font("Lucida Sans", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.password2_text.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.password2_text.Location = new System.Drawing.Point(44, 237);
+            this.password2_text.Name = "password2_text";
+            this.password2_text.Size = new System.Drawing.Size(366, 26);
+            this.password2_text.TabIndex = 4;
+            this.password2_text.Text = "Confirm Password";
+            this.password2_text.Click += new System.EventHandler(this.textBox4_Click);
             // 
-            // button1
+            // register_btn
             // 
-            this.button1.BackColor = System.Drawing.Color.SeaShell;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(44, 331);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(366, 48);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Register";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.register_btn.BackColor = System.Drawing.Color.SeaShell;
+            this.register_btn.FlatAppearance.BorderSize = 0;
+            this.register_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.register_btn.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.register_btn.Location = new System.Drawing.Point(44, 331);
+            this.register_btn.Name = "register_btn";
+            this.register_btn.Size = new System.Drawing.Size(366, 48);
+            this.register_btn.TabIndex = 5;
+            this.register_btn.Text = "Register";
+            this.register_btn.UseVisualStyleBackColor = false;
+            this.register_btn.Click += new System.EventHandler(this.button1_Click);
             // 
             // registerForm
             // 
@@ -121,11 +121,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(452, 468);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.register_btn);
+            this.Controls.Add(this.password2_text);
+            this.Controls.Add(this.password_text);
+            this.Controls.Add(this.email_text);
+            this.Controls.Add(this.username_text);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -140,10 +140,10 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox username_text;
+        private System.Windows.Forms.TextBox email_text;
+        private System.Windows.Forms.TextBox password_text;
+        private System.Windows.Forms.TextBox password2_text;
+        private System.Windows.Forms.Button register_btn;
     }
 }

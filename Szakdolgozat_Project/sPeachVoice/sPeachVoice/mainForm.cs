@@ -16,5 +16,20 @@ namespace sPeachVoice
         {
             InitializeComponent();
         }
+
+        private void conversation_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void servers_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void options_btn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

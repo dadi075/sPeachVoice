@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Net.Sockets;
+using System.Net;
+using NAudio.Wave;
+using System.IO;
+using System.Threading;
 
 namespace database_NAudio_test
 {
@@ -17,42 +22,44 @@ namespace database_NAudio_test
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string mysqlConnection = "datasource=localhost;port=3306;username=root;password=asdfghjk123";
-            SqlConnection sqlcon = new SqlConnection();
-            sqlcon.Open();
-            textBox1.Text = "kapcsolódva";
-
-            SqlCommand command = new SqlCommand("SELECT * FROM [Users]", sqlcon);
-            SqlDataReader reader = command.ExecuteReader();
-            while (reader.Read()) {
-                richTextBox1.Text = "első tábla: " + reader.GetString(0);
-            }
-            reader.Close();
-            sqlcon.Close();
-        }
-
-
         NAudio.Wave.WaveIn source = null;
         NAudio.Wave.DirectSoundOut waveOut = null;
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            int deviceNumber = 0;
+
             source = new NAudio.Wave.WaveIn();
-            source.DeviceNumber = 0;
-            source.WaveFormat = new NAudio.Wave.WaveFormat(44100, NAudio.Wave.WaveIn.GetCapabilities(0).Channels);
+            source.DeviceNumber = deviceNumber;
+            source.WaveFormat = new NAudio.Wave.WaveFormat(44100, NAudio.Wave.WaveIn.GetCapabilities(deviceNumber).Channels);
 
             NAudio.Wave.WaveInProvider waveIn = new NAudio.Wave.WaveInProvider(source);
 
             waveOut = new NAudio.Wave.DirectSoundOut();
             waveOut.Init(waveIn);
 
-            textBox2.Text = "lejátszás folyamatos";
-
             source.StartRecording();
             waveOut.Play();
+        }
+        static UdpClient uc = new UdpClient(2302);
+
+
+        static Form1 f = new Form1();
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            while (i < 50) {
+                receiver();
+                i++;
+            }
+        }
+        static void receiver()
+        {
+                IPEndPoint iep = null;
+                byte[] db = uc.Receive(ref iep);
+                String s = Encoding.UTF8.GetString(db);
+                f.listBox1.Text = s;
         }
     }
 }

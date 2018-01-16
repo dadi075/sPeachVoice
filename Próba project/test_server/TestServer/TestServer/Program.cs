@@ -42,9 +42,10 @@ namespace TestServer
                 }
             }
             UdpClient uc = new UdpClient();
+            IPEndPoint iep = new IPEndPoint(IPAddress.Broadcast, 2302);
             while (true)
             {
-                uc.Send(s, s.Length, new IPEndPoint(IPAddress.Loopback, 2302));
+                uc.Send(s, s.Length, iep);
             }
             
             Console.ReadKey();

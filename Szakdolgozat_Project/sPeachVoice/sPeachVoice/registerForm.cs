@@ -19,10 +19,7 @@ namespace sPeachVoice
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //todo registration code here
-
-
-
+            //regisztráció
 
             this.Close();
         }

@@ -72,7 +72,8 @@ namespace database_NAudio_test
         private void button3_Click(object sender, EventArgs e)
         {
             /*
-             csatlakozás
+             csatlakozás/ küldés / fogadás
+             innen indul ki minden
              */
             if (!connected)
             {

@@ -6,6 +6,7 @@ using database_NAudio_test;
 
 namespace NAudioDemo.NetworkChatDemo
 {
+    //kodek
     class ALawChatCodec : INetworkChatCodec
     {
         public string Name

@@ -16,21 +16,25 @@ namespace sPeachVoice
         {
             InitializeComponent();
         }
+        static logInForm logForm = new logInForm();
+        static registerForm regForm = new registerForm();
+        static mainForm mainForm = new mainForm();
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            // login form bezárása, mainform felbukkan
+            // majd account és jelszó ellenőrzés
+            logForm.Close();
+            mainForm.Show();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            //showing the registration form
-            logInForm logForm = new logInForm();
-            registerForm regForm = new registerForm();
+            //regisztrációra átvisz
             logForm.Hide();
             regForm.Show();
         }
-
+        // textbox-ok beállításai eddig
         private void textBox1_Click(object sender, EventArgs e)
         {
             username_text.Text = "";

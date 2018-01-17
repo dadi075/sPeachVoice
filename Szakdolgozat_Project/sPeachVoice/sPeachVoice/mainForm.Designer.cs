@@ -37,11 +37,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.signout_btn = new System.Windows.Forms.Button();
             this.options_btn = new System.Windows.Forms.Button();
             this.servers_btn = new System.Windows.Forms.Button();
             this.conversation_btn = new System.Windows.Forms.Button();
             this.dashboard_panel = new System.Windows.Forms.Panel();
-            this.signout_btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -128,6 +128,19 @@
             this.panel4.Size = new System.Drawing.Size(212, 268);
             this.panel4.TabIndex = 2;
             // 
+            // signout_btn
+            // 
+            this.signout_btn.BackColor = System.Drawing.Color.LightSalmon;
+            this.signout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.signout_btn.Font = new System.Drawing.Font("Lucida Sans", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.signout_btn.Location = new System.Drawing.Point(0, 180);
+            this.signout_btn.Name = "signout_btn";
+            this.signout_btn.Size = new System.Drawing.Size(212, 63);
+            this.signout_btn.TabIndex = 3;
+            this.signout_btn.Text = "Sign Out";
+            this.signout_btn.UseVisualStyleBackColor = false;
+            this.signout_btn.Click += new System.EventHandler(this.signout_btn_Click);
+            // 
             // options_btn
             // 
             this.options_btn.BackColor = System.Drawing.Color.LightSalmon;
@@ -170,23 +183,12 @@
             // 
             // dashboard_panel
             // 
+            this.dashboard_panel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.dashboard_panel.BackColor = System.Drawing.Color.Coral;
             this.dashboard_panel.Location = new System.Drawing.Point(218, 0);
             this.dashboard_panel.Name = "dashboard_panel";
             this.dashboard_panel.Size = new System.Drawing.Size(458, 453);
             this.dashboard_panel.TabIndex = 3;
-            // 
-            // signout_btn
-            // 
-            this.signout_btn.BackColor = System.Drawing.Color.LightSalmon;
-            this.signout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.signout_btn.Font = new System.Drawing.Font("Lucida Sans", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.signout_btn.Location = new System.Drawing.Point(0, 180);
-            this.signout_btn.Name = "signout_btn";
-            this.signout_btn.Size = new System.Drawing.Size(212, 63);
-            this.signout_btn.TabIndex = 3;
-            this.signout_btn.Text = "Sign Out";
-            this.signout_btn.UseVisualStyleBackColor = false;
             // 
             // mainForm
             // 
@@ -198,8 +200,11 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "mainForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "sPeach";
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

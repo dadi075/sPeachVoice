@@ -19,7 +19,7 @@ namespace sPeachVoice
 
         private void conversation_btn_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void servers_btn_Click(object sender, EventArgs e)
@@ -28,6 +28,11 @@ namespace sPeachVoice
         }
 
         private void options_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void signout_btn_Click(object sender, EventArgs e)
         {
 
         }

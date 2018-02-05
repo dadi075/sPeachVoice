@@ -36,6 +36,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.pass_text = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -44,17 +46,18 @@
             // username_text
             // 
             this.username_text.BackColor = System.Drawing.Color.SeaShell;
-            this.username_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.username_text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.username_text.Dock = System.Windows.Forms.DockStyle.Fill;
             this.username_text.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username_text.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.username_text.Location = new System.Drawing.Point(0, 0);
             this.username_text.Name = "username_text";
-            this.username_text.Size = new System.Drawing.Size(233, 25);
+            this.username_text.Size = new System.Drawing.Size(233, 32);
             this.username_text.TabIndex = 1;
             this.username_text.Text = "Username";
             this.username_text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.username_text.Click += new System.EventHandler(this.textBox1_Click);
+            this.username_text.TextChanged += new System.EventHandler(this.username_text_TextChanged);
             // 
             // signIn_btn
             // 
@@ -101,17 +104,18 @@
             // pass_text
             // 
             this.pass_text.BackColor = System.Drawing.Color.SeaShell;
-            this.pass_text.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.pass_text.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pass_text.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pass_text.Font = new System.Drawing.Font("Lucida Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pass_text.ForeColor = System.Drawing.SystemColors.WindowFrame;
             this.pass_text.Location = new System.Drawing.Point(0, 0);
             this.pass_text.Name = "pass_text";
-            this.pass_text.Size = new System.Drawing.Size(233, 25);
+            this.pass_text.Size = new System.Drawing.Size(233, 32);
             this.pass_text.TabIndex = 8;
             this.pass_text.Text = "Password";
             this.pass_text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.pass_text.Click += new System.EventHandler(this.textBox2_Click);
+            this.pass_text.TextChanged += new System.EventHandler(this.pass_text_TextChanged);
             // 
             // pictureBox1
             // 
@@ -123,12 +127,30 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Red;
+            this.panel2.Location = new System.Drawing.Point(340, 207);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(24, 24);
+            this.panel2.TabIndex = 10;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Red;
+            this.panel4.Location = new System.Drawing.Point(340, 260);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(24, 24);
+            this.panel4.TabIndex = 11;
+            // 
             // logInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(443, 439);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -158,6 +180,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox pass_text;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel4;
     }
 }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace sPeachVoice
 {
@@ -19,9 +20,16 @@ namespace sPeachVoice
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //regisztráció
-
-            this.Close();
+            if (panel1.BackColor == Color.Green
+                &&
+                panel2.BackColor == Color.Green
+                &&
+                panel3.BackColor == Color.Green
+                &&
+                panel4.BackColor == Color.Green)
+            {
+                this.Close();
+            }
         }
         //username
         private void textBox1_Click(object sender, EventArgs e)
@@ -148,6 +156,65 @@ namespace sPeachVoice
             {
                 password2_text.UseSystemPasswordChar = false;
                 password2_text.Text = "Confirm Password";
+            }
+        }
+
+        private void username_text_TextChanged(object sender, EventArgs e)
+        {
+            Regex usernameRgx = new Regex(@"^[a-z0-9_-]{3,15}$");
+            string username = username_text.Text;
+
+            if (usernameRgx.IsMatch(username))
+            {
+                panel1.BackColor = Color.Green;
+            }
+            else
+            {
+                panel1.BackColor = Color.Red;
+            }
+        }
+
+        private void email_text_TextChanged(object sender, EventArgs e)
+        {
+            string email = email_text.Text;
+            Regex emailRgx = new Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
+            if (emailRgx.IsMatch(email))
+            {
+                panel2.BackColor = Color.Green;
+            }
+            else
+            {
+                panel2.BackColor = Color.Red;
+            }
+        }
+        //metóduson kívül helyeztem el a passowrd regex-et, mert másik metódus is használja
+        Regex passwordRgx = new Regex(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$");
+
+        private void password_text_TextChanged(object sender, EventArgs e)
+        {
+            string password = password_text.Text;
+            if (passwordRgx.IsMatch(password))
+            {
+                panel3.BackColor = Color.Green;
+            }
+            else
+            {
+                panel3.BackColor = Color.Red;
+            }
+
+        }
+
+        private void password2_text_TextChanged(object sender, EventArgs e)
+        {
+            string password1 = password_text.Text;
+            string password2 = password2_text.Text;
+            if (passwordRgx.IsMatch(password2) && password1 == password2)
+            {
+                panel4.BackColor = Color.Green;
+            }
+            else
+            {
+                panel4.BackColor = Color.Red;
             }
         }
     }

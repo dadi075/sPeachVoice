@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.Net.Sockets;
+using System.IO;
 
 namespace sPeachVoice
 {
@@ -20,6 +23,27 @@ namespace sPeachVoice
         static logInForm logForm = new logInForm();
         static registerForm regForm = new registerForm();
         static mainForm mainForm = new mainForm();
+        //ellenőrzésnél segítő mezők
+        bool isUsernameOk = false;
+        bool isPasswordOk = false;
+
+        string username;
+        string password;
+
+        string ipAddress = "172.21.5.99";
+        int port = 1234;
+
+        BinaryWriter bw;
+
+        void login()
+        {
+            TcpClient tcpClient = new TcpClient(ipAddress, port);
+            tcpClient.Connect(ipAddress, port);
+            bw = new BinaryWriter(tcpClient.GetStream());
+            bw.Write(username);
+            bw.Write(password);
+            bw.Flush();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -28,12 +52,16 @@ namespace sPeachVoice
             // ha jól lett beírva egyenlőre csak átvisz a main formra
             //ha nem focusba hozza a regisztrációs linket
             // bejelentkezési adatok elküldése majd
-            if (panel2.BackColor == Color.Green && panel4.BackColor == Color.Green)
+            if (isUsernameOk == true && isPasswordOk == true)
             {
+                username = username_text.Text;
+                password = pass_text.Text;
+                login();
                 mainForm.Show();
-                logForm.Close();
+                logForm.Hide();
             }
-            else {
+            else
+            {
                 linkLabel1.Focus();
             }
         }
@@ -91,10 +119,10 @@ namespace sPeachVoice
             }
         }
         /*username ellenőrzés regex-el
-         *ehhez beimportálva a System.Text.RegularExpressions 
-         * felhelyezve két panel amik az adott mezők helyességét mutatják
-         * csak akkor lehet elkülden majd, ha a két panel színe megegyezik
-         */
+        *ehhez beimportálva a System.Text.RegularExpressions 
+        * felhelyezve két panel amik az adott mezők helyességét mutatják
+        * csak akkor lehet elkülden majd, ha a két panel színe megegyezik
+        */
         private void username_text_TextChanged(object sender, EventArgs e)
         {
             //csak kis és nagybetű + szám
@@ -103,11 +131,11 @@ namespace sPeachVoice
 
             if (usernameRgx.IsMatch(username))
             {
-                panel2.BackColor = Color.Green;
+                isUsernameOk = true;
             }
             else
             {
-                panel2.BackColor = Color.Red;
+                isUsernameOk = false;
             }
         }
 
@@ -118,11 +146,11 @@ namespace sPeachVoice
             string password = pass_text.Text;
             if (passwordRgx.IsMatch(password))
             {
-                panel4.BackColor = Color.Green;
+                isPasswordOk = true;
             }
             else
             {
-                panel4.BackColor = Color.Red;
+                isPasswordOk = false;
             }
         }
     }

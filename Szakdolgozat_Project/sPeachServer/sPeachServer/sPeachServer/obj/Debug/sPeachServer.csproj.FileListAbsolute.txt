@@ -1,0 +1,16 @@
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\sPeachServer.exe.config
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\sPeachServer.exe
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\sPeachServer.pdb
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\EntityFramework.dll
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\System.Data.SQLite.dll
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\EntityFramework.xml
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\System.Data.SQLite.xml
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\obj\Debug\sPeachServer.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\obj\Debug\sPeachServer.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\obj\Debug\sPeachServer.exe
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachServer\sPeachServer\sPeachServer\obj\Debug\sPeachServer.pdb

@@ -36,8 +36,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.pass_text = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -127,30 +125,12 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Red;
-            this.panel2.Location = new System.Drawing.Point(340, 207);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(24, 24);
-            this.panel2.TabIndex = 10;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Red;
-            this.panel4.Location = new System.Drawing.Point(340, 260);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(24, 24);
-            this.panel4.TabIndex = 11;
-            // 
             // logInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(443, 439);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -180,8 +160,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox pass_text;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel4;
     }
 }
 

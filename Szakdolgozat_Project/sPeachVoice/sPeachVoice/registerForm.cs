@@ -17,16 +17,21 @@ namespace sPeachVoice
         {
             InitializeComponent();
         }
+        //ellenőrzésnél segítő mezők
+        bool isUsernameOk = false;
+        bool isEmailOk = false;
+        bool isPasswordOk = false;
+        bool isPasswordConfOk = false;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (panel1.BackColor == Color.Green
+            if (isUsernameOk == true
                 &&
-                panel2.BackColor == Color.Green
+                isEmailOk == true
                 &&
-                panel3.BackColor == Color.Green
+                isPasswordOk == true
                 &&
-                panel4.BackColor == Color.Green)
+                isPasswordConfOk == true)
             {
                 this.Close();
             }
@@ -166,11 +171,11 @@ namespace sPeachVoice
 
             if (usernameRgx.IsMatch(username))
             {
-                panel1.BackColor = Color.Green;
+                bool isUsernameOk = true;
             }
             else
             {
-                panel1.BackColor = Color.Red;
+                bool isUsernameOk = false;
             }
         }
 
@@ -180,11 +185,11 @@ namespace sPeachVoice
             Regex emailRgx = new Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
             if (emailRgx.IsMatch(email))
             {
-                panel2.BackColor = Color.Green;
+                bool isEmailOk = true;
             }
             else
             {
-                panel2.BackColor = Color.Red;
+                bool isEmailOk = false;
             }
         }
         //metóduson kívül helyeztem el a passowrd regex-et, mert másik metódus is használja
@@ -195,11 +200,11 @@ namespace sPeachVoice
             string password = password_text.Text;
             if (passwordRgx.IsMatch(password))
             {
-                panel3.BackColor = Color.Green;
+                bool isPasswordOk = true;
             }
             else
             {
-                panel3.BackColor = Color.Red;
+                bool isPasswordOk = false;
             }
 
         }
@@ -210,11 +215,11 @@ namespace sPeachVoice
             string password2 = password2_text.Text;
             if (passwordRgx.IsMatch(password2) && password1 == password2)
             {
-                panel4.BackColor = Color.Green;
+                bool isPasswordConfOk = true;
             }
             else
             {
-                panel4.BackColor = Color.Red;
+                bool isPasswordConfOk = false;
             }
         }
     }

@@ -35,10 +35,6 @@
             this.password_text = new System.Windows.Forms.TextBox();
             this.password2_text = new System.Windows.Forms.TextBox();
             this.register_btn = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // label1
@@ -123,48 +119,12 @@
             this.register_btn.UseVisualStyleBackColor = false;
             this.register_btn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Red;
-            this.panel1.Location = new System.Drawing.Point(417, 116);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(23, 21);
-            this.panel1.TabIndex = 6;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Red;
-            this.panel2.Location = new System.Drawing.Point(416, 161);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(23, 21);
-            this.panel2.TabIndex = 7;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Red;
-            this.panel3.Location = new System.Drawing.Point(416, 204);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(23, 21);
-            this.panel3.TabIndex = 7;
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.Red;
-            this.panel4.Location = new System.Drawing.Point(416, 249);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(23, 21);
-            this.panel4.TabIndex = 7;
-            // 
             // registerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Bisque;
             this.ClientSize = new System.Drawing.Size(452, 468);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.register_btn);
             this.Controls.Add(this.password2_text);
             this.Controls.Add(this.password_text);
@@ -189,9 +149,5 @@
         private System.Windows.Forms.TextBox password_text;
         private System.Windows.Forms.TextBox password2_text;
         private System.Windows.Forms.Button register_btn;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
     }
 }

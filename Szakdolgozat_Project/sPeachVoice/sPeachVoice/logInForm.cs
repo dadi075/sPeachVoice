@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
+using System.Threading;
 
 namespace sPeachVoice
 {
@@ -23,6 +24,7 @@ namespace sPeachVoice
         static logInForm logForm = new logInForm();
         static registerForm regForm = new registerForm();
         static mainForm mainForm = new mainForm();
+        Hash sha = new Hash();
         //ellenőrzésnél segítő mezők
         bool isUsernameOk = false;
         bool isPasswordOk = false;
@@ -30,19 +32,9 @@ namespace sPeachVoice
         string username;
         string password;
 
-        string ipAddress = "172.21.5.99";
-        int port = 1234;
-
-        BinaryWriter bw;
-
-        void login()
+        void onResponse()
         {
-            TcpClient tcpClient = new TcpClient(ipAddress, port);
-            tcpClient.Connect(ipAddress, port);
-            bw = new BinaryWriter(tcpClient.GetStream());
-            bw.Write(username);
-            bw.Write(password);
-            bw.Flush();
+            Console.WriteLine("asdasdasd");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,9 +48,19 @@ namespace sPeachVoice
             {
                 username = username_text.Text;
                 password = pass_text.Text;
-                login();
+                Connection.onResponse response = onResponse;
+                Connection connection = new Connection(response);
+
+                connection.binaryWriter.Write((byte)UserMessageType.login_Data);
+                connection.binaryWriter.Write(username);
+                connection.binaryWriter.Write(sha.sha256(password));
+                connection.binaryWriter.Flush();
+
+
+                //visszakapott adat levizsgálása, hogy sikerült-e a login
+
                 mainForm.Show();
-                logForm.Hide();
+                this.Close();
             }
             else
             {

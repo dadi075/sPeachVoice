@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection.cs" />
+    <Compile Include="Hash.cs" />
     <Compile Include="logInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,7 +70,7 @@
     <Compile Include="registerForm.Designer.cs">
       <DependentUpon>registerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
+    <Compile Include="UserMessageType.cs" />
     <EmbeddedResource Include="logInForm.resx">
       <DependentUpon>logInForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -23,6 +23,12 @@ namespace sPeachVoice
         bool isPasswordOk = false;
         bool isPasswordConfOk = false;
 
+
+        void onResponse()
+        {
+            Console.WriteLine("asd");
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (isUsernameOk == true
@@ -33,6 +39,20 @@ namespace sPeachVoice
                 &&
                 isPasswordConfOk == true)
             {
+                Connection.onResponse response = onResponse;
+                Connection connection = new Connection(response);
+                Hash sha = new Hash();
+
+                //adatok küldése
+                connection.binaryWriter.Write((byte)UserMessageType.registration_Data);
+                connection.binaryWriter.Write(username_text.Text);
+                connection.binaryWriter.Write(email_text.Text);
+                connection.binaryWriter.Write(sha.sha256(password_text.Text));
+                connection.binaryWriter.Flush();
+
+                //vissza kapott adat levizsgálása, hogy sikerült-e a regisztráció
+
+
                 this.Close();
             }
         }

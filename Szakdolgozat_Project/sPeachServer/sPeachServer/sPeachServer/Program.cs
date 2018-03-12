@@ -15,28 +15,9 @@ namespace sPeachServer
     {
         static void Main(string[] args)
         {
-        }
-        
-        static void checkLogin(string username, string password)
-        {
-            string data = "";
-            using (SQLiteConnection con = new SQLiteConnection("Data Source=server.db;Version=3;New=False;Compress=True;"))
-            {
-                con.Open();
-                string cmd = @"SELECT name FROM user WHERE password LIKE " + password + " AND name LIKE " + username + ";";
-                using (SQLiteCommand command = new SQLiteCommand(cmd, con))
-                {
-                    using (SQLiteDataReader dr = command.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            data = dr.GetString(0);
-                        }
-                    }
+            Connection con = new Connection();
+            
 
-                }
-                con.Close();
-            }
         }
     }
 }

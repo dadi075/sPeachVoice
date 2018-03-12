@@ -56,7 +56,6 @@ namespace sPeachVoice
                 connection.binaryWriter.Write(sha.sha256(password));
                 connection.binaryWriter.Flush();
 
-
                 //visszakapott adat levizsgálása, hogy sikerült-e a login
 
                 mainForm.Show();

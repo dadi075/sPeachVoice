@@ -21,20 +21,21 @@ namespace sPeachVoice
         {
             InitializeComponent();
         }
-        static logInForm logForm = new logInForm();
-        static registerForm regForm = new registerForm();
-        static mainForm mainForm = new mainForm();
+        //formok
+        registerForm regForm = new registerForm();
+        mainForm mainForm = new mainForm();
+
         Hash sha = new Hash();
         //ellenőrzésnél segítő mezők
         bool isUsernameOk = false;
         bool isPasswordOk = false;
 
-        string username;
+        public static string username;
         string password;
 
         void onResponse()
         {
-            Console.WriteLine("asdasdasd");
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,18 +49,16 @@ namespace sPeachVoice
             {
                 username = username_text.Text;
                 password = pass_text.Text;
-                Connection.onResponse response = onResponse;
+                /*Connection.onResponse response = onResponse;
                 Connection connection = new Connection(response);
 
                 connection.binaryWriter.Write((byte)UserMessageType.login_Data);
                 connection.binaryWriter.Write(username);
-                connection.binaryWriter.Write(sha.sha256(password));
-                connection.binaryWriter.Flush();
+                connection.binaryWriter.Write(password);
+                connection.binaryWriter.Flush();*/
 
                 //visszakapott adat levizsgálása, hogy sikerült-e a login
-
                 mainForm.Show();
-                this.Close();
             }
             else
             {
@@ -70,7 +69,7 @@ namespace sPeachVoice
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //regisztrációra átvisz
-            logForm.Hide();
+            this.Hide();
             regForm.Show();
         }
         // textbox-ok beállításai eddig
@@ -128,7 +127,7 @@ namespace sPeachVoice
         {
             //csak kis és nagybetű + szám
             Regex usernameRgx = new Regex(@"^[a-z0-9_-]{3,15}$");
-            string username = username_text.Text;
+            username = username_text.Text;
 
             if (usernameRgx.IsMatch(username))
             {

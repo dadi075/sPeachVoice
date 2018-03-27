@@ -43,7 +43,7 @@ namespace TestServer
             }
             //Küldés
             UdpClient uc = new UdpClient();
-            Console.WriteLine("Írd be az email címet amire küldenél!!");
+            Console.WriteLine("Írd be az ip címet amire küldenél!!");
             IPEndPoint iep = new IPEndPoint(IPAddress.Parse(Console.ReadLine()), 2302);
             uc.Send(s, s.Length, iep);
             

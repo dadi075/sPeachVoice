@@ -11,3 +11,5 @@ C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\
 C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.registerForm.resources
 C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.mainForm.resources
 C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\bin\Debug\MetroFramework.dll
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.chat_form.resources
+C:\Users\User\Desktop\Szakdolgozat\Szakdolgozat_Project\sPeachVoice\sPeachVoice\obj\Debug\sPeachVoice.optionForm.resources

@@ -132,7 +132,10 @@
             this.Controls.Add(this.username_text);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Lucida Sans", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "registerForm";
             this.Text = "Register";
             this.Click += new System.EventHandler(this.registerForm_Click);

@@ -14,9 +14,8 @@ namespace sPeachServer
     class Program
     {
         static SQLite sql = new SQLite();
-        static List<TcpClient> clients = new List<TcpClient>();
-        static List<User> users = new List<User>();
-        static byte[] onResponseLogin;
+        static Dictionary<uint, User> clients = new Dictionary<uint, User>();
+        static byte[] loginResponse;
 
         static void Main(string[] args)
         {
@@ -37,35 +36,25 @@ namespace sPeachServer
                 con.binaryReader = new BinaryReader(networkStream);
 
 
-                //eltároljuk a kapcsolódott usereket
-                //bejelentkezés után majd még egyszer fogadjuk a usereket és majd akkor a User képével együtt tároljuk el
-
-
-                TcpClient client = con.tcpListener.AcceptTcpClient();
-                clients.Add(client);
-
                 messageType = con.binaryReader.ReadByte();
 
                 switch ((UserMessageType)messageType)
                 {
                     case UserMessageType.login_Data:
-                        string username = con.binaryReader.ReadString();
-                        string password = con.binaryReader.ReadString();
+                        string username_login = con.binaryReader.ReadString();
+                        string password_login = con.binaryReader.ReadString();
+                        
+                        uint id = 0;
 
-                        string command = "SELECT username, password FROM user WHERE username = '" + username + "' AND password = '" + password + "';";
+                        string command = "SELECT username, password FROM user WHERE username = '" + username_login + "' AND password = '" + password_login + "';";
 
                         sql.loginSelect(command);
 
-
-                        if (sql.username == username)
+                        if (sql.username == username_login
+                            &&
+                            sql.password == password_login)
                         {
-                            onResponseLogin = Encoding.ASCII.GetBytes("1");
-                            networkStream.Write(onResponseLogin, 1, onResponseLogin.Length);
-                        }
-                        else
-                        {
-                            onResponseLogin = Encoding.ASCII.GetBytes("0");
-                            networkStream.Write(onResponseLogin, 1, onResponseLogin.Length);
+                            clients.Add(id, new User() {ipAddress = socket.RemoteEndPoint.ToString(), username = username_login, picture =  });
                         }
 
                         break;

@@ -23,7 +23,7 @@ namespace sPeachVoice
         }
         //formok
         registerForm regForm = new registerForm();
-        mainForm mainForm = new mainForm();
+        mainForm mainForm = new mainForm(defaultAvatar, "Available", Color.Green);
 
         Hash sha = new Hash();
         //ellenőrzésnél segítő mezők
@@ -33,9 +33,11 @@ namespace sPeachVoice
         public static string username;
         string password;
 
+        static Bitmap defaultAvatar = new Bitmap(@"avatar.png");
+
         void onResponse()
         {
-            
+                
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,21 +45,22 @@ namespace sPeachVoice
             // login form bezárása, mainform felbukkan
             // mező állapot jelző panelek ellenőrzése
             // ha jól lett beírva egyenlőre csak átvisz a main formra
-            //ha nem focusba hozza a regisztrációs linket
+            //ha nem, focusba hozza a regisztrációs linket
             // bejelentkezési adatok elküldése majd
             if (isUsernameOk == true && isPasswordOk == true)
             {
                 username = username_text.Text;
                 password = pass_text.Text;
-                /*Connection.onResponse response = onResponse;
-                Connection connection = new Connection(response);
+                /* Connection.onResponse response = onResponse;
+                 Connection connection = new Connection(response);
 
-                connection.binaryWriter.Write((byte)UserMessageType.login_Data);
-                connection.binaryWriter.Write(username);
-                connection.binaryWriter.Write(password);
-                connection.binaryWriter.Flush();*/
+                 connection.binaryWriter.Write((byte)UserMessageType.login_Data);
+                 connection.binaryWriter.Write(username);
+                 connection.binaryWriter.Write(password);
+                 connection.binaryWriter.Flush();*/
 
                 //visszakapott adat levizsgálása, hogy sikerült-e a login
+
                 mainForm.Show();
             }
             else

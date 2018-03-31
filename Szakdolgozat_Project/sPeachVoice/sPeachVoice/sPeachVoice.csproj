@@ -68,6 +68,7 @@
     <Compile Include="mainForm.Designer.cs">
       <DependentUpon>mainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MySettings.cs" />
     <Compile Include="optionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +84,7 @@
       <DependentUpon>registerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ServerMessageType.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="UserMessageType.cs" />
     <EmbeddedResource Include="chat_form.resx">
       <DependentUpon>chat_form.cs</DependentUpon>

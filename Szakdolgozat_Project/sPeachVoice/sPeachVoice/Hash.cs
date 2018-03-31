@@ -11,9 +11,11 @@ namespace sPeachVoice
     {
         public string sha256(string password)
         {
+            string pass;
+            pass = password + "asd123";
             SHA256 sha = SHA256Managed.Create();
-            byte[] stringInBytes = Encoding.UTF8.GetBytes(password);
-            byte[] hashed = sha.ComputeHash(stringInBytes);
+            byte[] passInBytes = Encoding.UTF8.GetBytes(pass);
+            byte[] hashed = sha.ComputeHash(passInBytes);
             return GetHashFromArray(hashed);
         }
 
@@ -22,7 +24,7 @@ namespace sPeachVoice
             StringBuilder hashedString = new StringBuilder();
             for (int i = 0; i < hashed.Length; i++)
             {
-                hashedString.Append(hashed[i].ToString("X2"));
+                hashedString.Append(hashed[i].ToString());
             }
             return hashedString.ToString();
         }

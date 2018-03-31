@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -43,6 +44,7 @@
             this.dashboard_panel = new System.Windows.Forms.Panel();
             this.availableListView = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -84,6 +86,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Chartreuse;
+            this.pictureBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox2.Location = new System.Drawing.Point(161, 54);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(12, 12);
@@ -183,6 +186,7 @@
             // availableListView
             // 
             this.availableListView.BackColor = System.Drawing.Color.Coral;
+            this.availableListView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.availableListView.Location = new System.Drawing.Point(17, 36);
             this.availableListView.Name = "availableListView";
             this.availableListView.Size = new System.Drawing.Size(430, 404);
@@ -204,7 +208,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
-            this.ClientSize = new System.Drawing.Size(677, 452);
+            this.ClientSize = new System.Drawing.Size(677, 453);
             this.Controls.Add(this.dashboard_panel);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -245,5 +249,6 @@
         private System.Windows.Forms.Button signout_btn;
         private System.Windows.Forms.ListView availableListView;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Timer timer1;
     }
 }

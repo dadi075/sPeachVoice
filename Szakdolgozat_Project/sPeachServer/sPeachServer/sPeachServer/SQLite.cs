@@ -37,7 +37,8 @@ namespace sPeachServer
                         username = sQLiteDataReader.GetString(0);
                         password = sQLiteDataReader.GetString(1);
 
-                        Console.WriteLine("username: " + username + "; password: " + password);
+                        Console.WriteLine(username);
+                        Console.WriteLine(password);
                     }
                 }
             }

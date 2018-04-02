@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace sPeachVoice
 {
@@ -18,10 +19,10 @@ namespace sPeachVoice
             InitializeComponent();
         }
         //ellenőrzésnél segítő mezők
-        bool isUsernameOk = false;
-        bool isEmailOk = false;
-        bool isPasswordOk = false;
-        bool isPasswordConfOk = false;
+        static bool isUsernameOk = false;
+        static bool isEmailOk = false;
+        static bool isPasswordOk = false;
+        static bool isPasswordConfOk = false;
 
 
         void onResponse()
@@ -43,17 +44,32 @@ namespace sPeachVoice
                 Connection connection = new Connection(response);
                 Hash sha = new Hash();
 
+                BinaryWriter binaryWriter = new BinaryWriter(connection.tcpClient.GetStream());
                 //adatok küldése
-                connection.binaryWriter.Write((byte)UserMessageType.registration_Data);
-                connection.binaryWriter.Write(username_text.Text);
-                connection.binaryWriter.Write(email_text.Text);
-                connection.binaryWriter.Write(sha.sha256(password_text.Text));
-                connection.binaryWriter.Flush();
+                
+                binaryWriter.Write((byte)UserMessageType.registration_Data);
+                binaryWriter.Write(username_text.Text);
+                binaryWriter.Write(email_text.Text);
+                binaryWriter.Write(sha.sha256(password_text.Text));
+                binaryWriter.Flush();
 
                 //vissza kapott adat levizsgálása, hogy sikerült-e a regisztráció
-
-
-                this.Close();
+                using (BinaryReader binaryReader = new BinaryReader(connection.tcpClient.GetStream())) {
+                    ServerMessageType i = (ServerMessageType)binaryReader.ReadByte();
+                    if (i == ServerMessageType.register_response)
+                    {
+                        if (binaryReader.ReadInt32() == 1)
+                        {
+                            this.Close();
+                            connection.CloseConnection();
+                        }
+                        else
+                        {
+                            label1.Text = "Wrong username or password!";
+                            connection.CloseConnection();
+                        }
+                    }
+                }
             }
         }
         //username
@@ -191,11 +207,11 @@ namespace sPeachVoice
 
             if (usernameRgx.IsMatch(username))
             {
-                bool isUsernameOk = true;
+                isUsernameOk = true;
             }
             else
             {
-                bool isUsernameOk = false;
+                isUsernameOk = false;
             }
         }
 
@@ -205,26 +221,26 @@ namespace sPeachVoice
             Regex emailRgx = new Regex(@"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$");
             if (emailRgx.IsMatch(email))
             {
-                bool isEmailOk = true;
+                isEmailOk = true;
             }
             else
             {
-                bool isEmailOk = false;
+                isEmailOk = false;
             }
         }
         //metóduson kívül helyeztem el a passowrd regex-et, mert másik metódus is használja
-        Regex passwordRgx = new Regex(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$");
+        static Regex passwordRgx = new Regex(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$");
 
         private void password_text_TextChanged(object sender, EventArgs e)
         {
             string password = password_text.Text;
             if (passwordRgx.IsMatch(password))
             {
-                bool isPasswordOk = true;
+                isPasswordOk = true;
             }
             else
             {
-                bool isPasswordOk = false;
+                isPasswordOk = false;
             }
 
         }
@@ -235,12 +251,17 @@ namespace sPeachVoice
             string password2 = password2_text.Text;
             if (passwordRgx.IsMatch(password2) && password1 == password2)
             {
-                bool isPasswordConfOk = true;
+                isPasswordConfOk = true;
             }
             else
             {
-                bool isPasswordConfOk = false;
+                isPasswordConfOk = false;
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

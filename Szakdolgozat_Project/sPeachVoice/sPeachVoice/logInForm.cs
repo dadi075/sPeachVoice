@@ -32,12 +32,18 @@ namespace sPeachVoice
 
         public static string username;
         string password;
+        byte[] pictureInBytes = imageToByteArray(defaultAvatar);
 
         static Bitmap defaultAvatar = new Bitmap(@"avatar.png");
 
         void onResponse()
         {
-                
+
+        }
+        public static byte[] imageToByteArray(Bitmap img)
+        {
+            ImageConverter convert = new ImageConverter();
+            return (byte[])convert.ConvertTo(img, typeof(byte[]));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,17 +57,35 @@ namespace sPeachVoice
             {
                 username = username_text.Text;
                 password = pass_text.Text;
-                /* Connection.onResponse response = onResponse;
-                 Connection connection = new Connection(response);
 
-                 connection.binaryWriter.Write((byte)UserMessageType.login_Data);
-                 connection.binaryWriter.Write(username);
-                 connection.binaryWriter.Write(password);
-                 connection.binaryWriter.Flush();*/
+                Connection.onResponse response = onResponse;
+                Connection connection = new Connection(response);
+
+                BinaryWriter binaryWriter = new BinaryWriter(connection.tcpClient.GetStream());
+
+                binaryWriter.Write((byte)UserMessageType.login_Data);
+                binaryWriter.Write(username);
+                binaryWriter.Write(sha.sha256(password));
+                binaryWriter.Write(pictureInBytes.Length);
+                binaryWriter.Write(pictureInBytes);
+                binaryWriter.Flush();
 
                 //visszakapott adat levizsgálása, hogy sikerült-e a login
-
-                mainForm.Show();
+                using (BinaryReader binaryReader = new BinaryReader(connection.tcpClient.GetStream())) {
+                    if ((ServerMessageType)binaryReader.ReadByte() == 0)
+                    {
+                        if (binaryReader.ReadInt32() == 1)
+                        {
+                            mainForm.Show();
+                            connection.CloseConnection();
+                        }
+                        else
+                        {
+                            label1.Text = "Wrong username or password!";
+                            connection.CloseConnection();
+                        }
+                    }
+                }
             }
             else
             {
@@ -72,7 +96,6 @@ namespace sPeachVoice
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //regisztrációra átvisz
-            this.Hide();
             regForm.Show();
         }
         // textbox-ok beállításai eddig

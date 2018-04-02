@@ -18,7 +18,9 @@ namespace sPeachVoice
             setAvatar(avatar);
             setState(stateName, stateColor);
         }
-        chat_form chat_form = new chat_form();
+        static string username;
+
+        chat_form chat_form = new chat_form(username);
         optionForm option_form = new optionForm();
 
         private void servers_btn_Click(object sender, EventArgs e)
@@ -37,6 +39,7 @@ namespace sPeachVoice
         {
             //név hozzáad
             name.Text = logInForm.username;
+            username = name.Text;
 
             //kép hozzáad a listához
             ImageList imageList = new ImageList();

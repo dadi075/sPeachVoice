@@ -20,11 +20,10 @@ namespace sPeachServer
             sqlConn = new SQLiteConnection("Data Source=server.db;Version=3;New=False;Compress=True;");
             sqlConn.Open();
         }
-        public void executeInsert(string cmd)
+        public int executeInsert(string cmd)
         {
             sQLiteCommand = new SQLiteCommand(cmd, sqlConn);
-            sQLiteCommand.ExecuteNonQuery();
-            sqlConn.Close();
+            return sQLiteCommand.ExecuteNonQuery();
         }
         public void loginSelect(string cmd)
         {
@@ -36,12 +35,12 @@ namespace sPeachServer
                     {
                         username = sQLiteDataReader.GetString(0);
                         password = sQLiteDataReader.GetString(1);
-
-                        Console.WriteLine(username);
-                        Console.WriteLine(password);
                     }
                 }
             }
+        }
+        public void closeDatabase()
+        {
             sqlConn.Close();
         }
     }

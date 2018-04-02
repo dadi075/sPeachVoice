@@ -13,9 +13,6 @@ namespace sPeachServer
     {
         private int port = 1234;
         public TcpListener tcpListener;
-        public BinaryReader binaryReader;
-        public BinaryWriter binaryWriter;
-        public NetworkStream networkStream;
 
         public Connection()
         {

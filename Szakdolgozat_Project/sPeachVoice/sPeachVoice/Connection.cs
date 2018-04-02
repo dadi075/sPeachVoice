@@ -14,7 +14,6 @@ namespace sPeachVoice
         private string ipAddress = "127.0.0.1";
         private int port = 1234;
         public TcpClient tcpClient = new TcpClient();
-        public BinaryWriter binaryWriter;
         private onResponse response;
 
 
@@ -25,7 +24,6 @@ namespace sPeachVoice
         {
             this.response = response;
             tcpClient.Connect(ipAddress, port);
-            binaryWriter = new BinaryWriter(tcpClient.GetStream());
             response();
         }
         public void CloseConnection()

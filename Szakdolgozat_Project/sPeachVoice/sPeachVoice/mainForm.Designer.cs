@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -44,7 +43,6 @@
             this.dashboard_panel = new System.Windows.Forms.Panel();
             this.availableListView = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -249,6 +247,5 @@
         private System.Windows.Forms.Button signout_btn;
         private System.Windows.Forms.ListView availableListView;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -35,6 +35,9 @@
     <Reference Include="MetroFramework">
       <HintPath>..\..\..\..\..\Documents\Visual Studio 2017\Projects\SzakdogaNezelodes\packages\MetroFramework.RunTime.1.2.0.3\lib\net40-Client\MetroFramework.dll</HintPath>
     </Reference>
+    <Reference Include="NAudio, Version=1.8.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.4\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ALawChatCodec.cs" />
     <Compile Include="chat_form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +60,7 @@
     </Compile>
     <Compile Include="Connection.cs" />
     <Compile Include="Hash.cs" />
+    <Compile Include="INetworkChatCodec.cs" />
     <Compile Include="logInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +91,7 @@
     <Compile Include="ServerMessageType.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserMessageType.cs" />
+    <Compile Include="UserState.cs" />
     <EmbeddedResource Include="chat_form.resx">
       <DependentUpon>chat_form.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +116,7 @@
     <EmbeddedResource Include="registerForm.resx">
       <DependentUpon>registerForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

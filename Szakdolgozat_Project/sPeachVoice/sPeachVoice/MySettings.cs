@@ -10,8 +10,8 @@ namespace sPeachVoice
     class MySettings
     {
         private string username;
-        private Image avatar = Image.FromFile("avatar.png");
-        private bool isAvailable = true;
+        private Image avatar;
+        private int Available;
 
         public Image getMyAvatar()
         {
@@ -29,13 +29,13 @@ namespace sPeachVoice
         {
             this.username = username;
         }
-        public bool getMyState()
+        public int getMyState()
         {
-            return isAvailable;
+            return Available;
         }
-        public void setMyState(bool state)
+        public void setMyState(int state)
         {
-            isAvailable = state;
+            Available = state;
         }
     }
 }

@@ -154,6 +154,7 @@
             this.MinimizeBox = false;
             this.Name = "logInForm";
             this.Text = "Log In";
+            this.Load += new System.EventHandler(this.logInForm_Load);
             this.Click += new System.EventHandler(this.logInForm_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -12,9 +12,11 @@ namespace sPeachVoice
 {
     public partial class optionForm : Form
     {
-        public optionForm()
+        static Connection connection;
+        public optionForm(Object con)
         {
             InitializeComponent();
+            connection = (Connection)con;
         }
         
         public string filePath;
@@ -38,7 +40,7 @@ namespace sPeachVoice
 
         private void submit_btn_Click(object sender, EventArgs e)
         {
-            mainForm main = new mainForm(selectedAvatar, stateText, stateColor);
+            mainForm main = new mainForm(selectedAvatar, stateText, stateColor, connection);
             main.Show();
             this.Close();
         }

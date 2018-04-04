@@ -9,18 +9,25 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NAudio.Wave;
+using System.Net;
+using System.Net.Sockets;
 
 namespace sPeachVoice
 {
     public partial class chat_form : Form
     {
-        public chat_form(string username)
+        Connection conn;
+        NetworkStream networkStream;
+        public chat_form(Object con)
         {
             InitializeComponent();
-            chat_username = username;
-            
+            conn = (Connection)con;
         }
-        static string chat_username;
+
+        string chat_username;
+
+
 
 
         public static void onResponse()
@@ -29,19 +36,14 @@ namespace sPeachVoice
         }
 
         static Connection.onResponse response = onResponse;
-        Connection connection;
+
 
         private void send_btn_Click(object sender, EventArgs e)
         {
-            connection = new Connection(response);
-            BinaryWriter binaryWriter = new BinaryWriter(connection.tcpClient.GetStream());
-
-            Console.WriteLine("1");
+            BinaryWriter binaryWriter = new BinaryWriter(networkStream);
             binaryWriter.Write((byte)UserMessageType.text_Message);
             binaryWriter.Write(chat_username);
             binaryWriter.Write(textBox1.Text);
-            binaryWriter.Flush();
-            Console.WriteLine("2");
             binaryWriter.Flush();
 
             textBox1.Text = "";
@@ -51,45 +53,34 @@ namespace sPeachVoice
         {
             if (e.KeyCode == Keys.Enter)
             {
-                connection = new Connection(response);
-                BinaryWriter binaryWriter = new BinaryWriter(connection.tcpClient.GetStream());
+                BinaryWriter binaryWriter = new BinaryWriter(networkStream);
+                binaryWriter = new BinaryWriter(networkStream);
 
-
-                Console.WriteLine("1");
                 binaryWriter.Write((byte)UserMessageType.text_Message);
                 binaryWriter.Write(chat_username);
                 binaryWriter.Write(textBox1.Text);
                 binaryWriter.Flush();
-                Console.WriteLine("2");
                 textBox1.Text = "";
             }
         }
         public void receiveMessage()
         {
-            connection = new Connection(response);
-            if (connection.tcpClient.GetStream().DataAvailable) {
+                BinaryReader binaryReader = new BinaryReader(networkStream);
                 while (true)
                 {
-                    using (BinaryReader binaryReader = new BinaryReader(connection.tcpClient.GetStream()))
+                    int messageType = binaryReader.ReadInt32();
+                    if ((ServerMessageType)messageType == ServerMessageType.chat_message)
                     {
-                        int messageType = binaryReader.ReadInt32();
-                        if ((ServerMessageType)messageType == ServerMessageType.chat_message)
-                        {
-                            string username = binaryReader.ReadString();
-                            string message = binaryReader.ReadString();
-                            listBox1.Invoke((MethodInvoker)(() =>
-                            {
-                                listBox1.Items.Add(username + message);
-                            }));
-                        }
+                        string username = binaryReader.ReadString();
+                        string message = binaryReader.ReadString();
                     }
                 }
             }
-        }
 
         private void chat_form_Load(object sender, EventArgs e)
         {
-            Thread receiverThread = new Thread(receiveMessage);
+            networkStream = conn.tcpClient.GetStream();
+            Thread receiverThread = new Thread(new ThreadStart(receiveMessage));
             receiverThread.Start();
         }
     }

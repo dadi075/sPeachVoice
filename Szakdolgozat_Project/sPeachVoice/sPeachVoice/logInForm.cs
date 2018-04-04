@@ -21,9 +21,12 @@ namespace sPeachVoice
         {
             InitializeComponent();
         }
-        //formok
-        registerForm regForm = new registerForm();
-        mainForm mainForm = new mainForm(defaultAvatar, "Available", Color.Green);
+        static Connection.onResponse response = onResponse;
+        Connection connection = new Connection(response);
+
+        registerForm regForm;
+        mainForm mainForm;
+
 
         Hash sha = new Hash();
         //ellenőrzésnél segítő mezők
@@ -36,14 +39,14 @@ namespace sPeachVoice
 
         static Bitmap defaultAvatar = new Bitmap(@"avatar.png");
 
-        void onResponse()
+        static void onResponse()
         {
-
         }
+
         public static byte[] imageToByteArray(Bitmap img)
         {
-            ImageConverter convert = new ImageConverter();
-            return (byte[])convert.ConvertTo(img, typeof(byte[]));
+            ImageConverter converter = new ImageConverter();
+            return (byte[])converter.ConvertTo(img, typeof(byte[]));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -57,9 +60,6 @@ namespace sPeachVoice
             {
                 username = username_text.Text;
                 password = pass_text.Text;
-
-                Connection.onResponse response = onResponse;
-                Connection connection = new Connection(response);
 
                 BinaryWriter binaryWriter = new BinaryWriter(connection.tcpClient.GetStream());
 
@@ -77,12 +77,10 @@ namespace sPeachVoice
                         if (binaryReader.ReadInt32() == 1)
                         {
                             mainForm.Show();
-                            connection.CloseConnection();
                         }
                         else
                         {
                             label1.Text = "Wrong username or password!";
-                            connection.CloseConnection();
                         }
                     }
                 }
@@ -178,6 +176,14 @@ namespace sPeachVoice
             {
                 isPasswordOk = false;
             }
+        }
+
+        private void logInForm_Load(object sender, EventArgs e)
+        {
+            Connection.onResponse response = onResponse;
+            connection = new Connection(response);
+            regForm = new registerForm(connection);
+            mainForm = new mainForm(defaultAvatar, "Available", Color.Green, connection);
         }
     }
 }

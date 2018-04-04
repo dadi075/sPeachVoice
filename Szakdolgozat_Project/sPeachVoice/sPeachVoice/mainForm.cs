@@ -12,16 +12,23 @@ namespace sPeachVoice
 {
     public partial class mainForm : Form
     {
-        public mainForm(Bitmap avatar, string stateName, Color stateColor)
+        Connection conn;
+
+        public mainForm(Bitmap avatar, string stateName, Color stateColor, Object con)
         {
             InitializeComponent();
             setAvatar(avatar);
             setState(stateName, stateColor);
+            conn = (Connection)con;
+            chat_form = new chat_form(conn);
+            option_form = new optionForm(conn);
         }
-        static string username;
+        
+        public static string usernameToShow;
 
-        chat_form chat_form = new chat_form(username);
-        optionForm option_form = new optionForm();
+        chat_form chat_form;
+        optionForm option_form;
+        
 
         private void servers_btn_Click(object sender, EventArgs e)
         {
@@ -39,7 +46,7 @@ namespace sPeachVoice
         {
             //név hozzáad
             name.Text = logInForm.username;
-            username = name.Text;
+            usernameToShow = name.Text;
 
             //kép hozzáad a listához
             ImageList imageList = new ImageList();
@@ -56,7 +63,7 @@ namespace sPeachVoice
             availableListView.Items.Add(item);
 
         }
-        //option formtól kapott kép beállítása az avatar helyére
+        //option és login formtól kapott kép beállítása az avatar helyére
         public void setAvatar(Bitmap avatar)
         {
             pictureBox1.Image = avatar;

@@ -26,9 +26,9 @@ namespace sPeachVoice
             tcpClient.Connect(ipAddress, port);
             response();
         }
-        public void CloseConnection()
+        /*public void CloseConnection()
         {
             tcpClient.Close();
-        }
+        }*/
     }
 }

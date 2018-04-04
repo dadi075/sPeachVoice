@@ -14,9 +14,13 @@ namespace sPeachVoice
 {
     public partial class registerForm : Form
     {
-        public registerForm()
+        static Connection connection;
+        public registerForm(Object con)
         {
             InitializeComponent();
+            Connection.onResponse response = onResponse;
+            connection = (Connection)con;
+
         }
         //ellenőrzésnél segítő mezők
         static bool isUsernameOk = false;
@@ -40,8 +44,7 @@ namespace sPeachVoice
                 &&
                 isPasswordConfOk == true)
             {
-                Connection.onResponse response = onResponse;
-                Connection connection = new Connection(response);
+                
                 Hash sha = new Hash();
 
                 BinaryWriter binaryWriter = new BinaryWriter(connection.tcpClient.GetStream());
@@ -55,18 +58,16 @@ namespace sPeachVoice
 
                 //vissza kapott adat levizsgálása, hogy sikerült-e a regisztráció
                 using (BinaryReader binaryReader = new BinaryReader(connection.tcpClient.GetStream())) {
-                    ServerMessageType i = (ServerMessageType)binaryReader.ReadByte();
-                    if (i == ServerMessageType.register_response)
+                    int i = binaryReader.ReadInt32();
+                    if ((ServerMessageType)i == ServerMessageType.register_response)
                     {
                         if (binaryReader.ReadInt32() == 1)
                         {
                             this.Close();
-                            connection.CloseConnection();
                         }
                         else
                         {
-                            label1.Text = "Wrong username or password!";
-                            connection.CloseConnection();
+                            label1.Text = "Something gone wrong, try again later.";
                         }
                     }
                 }

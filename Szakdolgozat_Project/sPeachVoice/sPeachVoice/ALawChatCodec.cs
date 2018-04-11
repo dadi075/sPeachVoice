@@ -51,7 +51,7 @@ namespace sPeachVoice
 
         public void Dispose()
         {
-            // nem szükséges a teszt projecthez
+            
         }
 
         public bool IsAvailable { get { return true; } }

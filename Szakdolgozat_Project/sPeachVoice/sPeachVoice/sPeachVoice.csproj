@@ -61,6 +61,7 @@
     <Compile Include="Connection.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="INetworkChatCodec.cs" />
+    <Compile Include="ListenerThreadState.cs" />
     <Compile Include="logInForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,7 +92,6 @@
     <Compile Include="ServerMessageType.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserMessageType.cs" />
-    <Compile Include="UserState.cs" />
     <EmbeddedResource Include="chat_form.resx">
       <DependentUpon>chat_form.cs</DependentUpon>
     </EmbeddedResource>

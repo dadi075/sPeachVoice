@@ -68,6 +68,16 @@ namespace database_NAudio_test
             Thread t = new Thread(dataReceiver);
             t.Start();
         }
+        /*IPAddress getBroadcastIP()
+        {
+            string ipAddress;
+            IPHostEntry iPHostEntry = Dns.Resolve(Dns.GetHostName());
+            IPAddress localIpAddress = iPHostEntry.AddressList[0];
+            ipAddress = Convert.ToString(localIpAddress);
+            ipAddress = ipAddress.Substring(0, ipAddress.LastIndexOf(".") + 1);
+            ipAddress += "255";
+            return IPAddress.Parse(ipAddress);
+        }*/
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -75,9 +85,10 @@ namespace database_NAudio_test
              csatlakozás/ küldés / fogadás
              innen indul ki minden
              */
+            
             if (!connected)
             {
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(textBox2.Text), 2303);
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("192.168.1.255"), 2303);
                 int inputDeviceNumber = 0;
                 Connect(endPoint, inputDeviceNumber, alcc);
                 button3.Text = "Disconnect";
@@ -128,6 +139,7 @@ namespace database_NAudio_test
             source.StartRecording();
 
             sendVoice = new UdpClient();
+            sendVoice.EnableBroadcast = true;
             receiveVoice = new UdpClient();
 
             receiveVoice.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, true);
@@ -161,7 +173,5 @@ namespace database_NAudio_test
                 alcc.Dispose();
             }
         }
-
-
     }
 }

@@ -15,33 +15,31 @@ using System.Threading;
 
 namespace sPeachVoice
 {
-    public partial class logInForm : Form
+    public partial class LogInForm : Form
     {
-        public logInForm()
+        public LogInForm(Main main)
         {
             InitializeComponent();
+            this.main = main;
+            main.connection.logInForm = this;
+            main.connection.regForm = regForm;
         }
-        static Connection.onResponse response = onResponse;
-        Connection connection = new Connection(response);
+        private Main main;
 
+        public static string username;
+        public static uint userIdFromServer;
         registerForm regForm;
-        mainForm mainForm;
-
 
         Hash sha = new Hash();
-        //ellenőrzésnél segítő mezők
+
         bool isUsernameOk = false;
         bool isPasswordOk = false;
 
-        public static string username;
+
         string password;
         byte[] pictureInBytes = imageToByteArray(defaultAvatar);
 
         static Bitmap defaultAvatar = new Bitmap(@"avatar.png");
-
-        static void onResponse()
-        {
-        }
 
         public static byte[] imageToByteArray(Bitmap img)
         {
@@ -61,29 +59,12 @@ namespace sPeachVoice
                 username = username_text.Text;
                 password = pass_text.Text;
 
-                BinaryWriter binaryWriter = new BinaryWriter(connection.tcpClient.GetStream());
-
-                binaryWriter.Write((byte)UserMessageType.login_Data);
-                binaryWriter.Write(username);
-                binaryWriter.Write(sha.sha256(password));
-                binaryWriter.Write(pictureInBytes.Length);
-                binaryWriter.Write(pictureInBytes);
-                binaryWriter.Flush();
-
-                //visszakapott adat levizsgálása, hogy sikerült-e a login
-                using (BinaryReader binaryReader = new BinaryReader(connection.tcpClient.GetStream())) {
-                    if ((ServerMessageType)binaryReader.ReadByte() == 0)
-                    {
-                        if (binaryReader.ReadInt32() == 1)
-                        {
-                            mainForm.Show();
-                        }
-                        else
-                        {
-                            label1.Text = "Wrong username or password!";
-                        }
-                    }
-                }
+                main.connection.binaryWriter.Write((byte)UserMessageType.login_Data);
+                main.connection.binaryWriter.Write(username);
+                main.connection.binaryWriter.Write(sha.sha256(password));
+                main.connection.binaryWriter.Write(pictureInBytes.Length);
+                main.connection.binaryWriter.Write(pictureInBytes);
+                main.connection.binaryWriter.Flush();
             }
             else
             {
@@ -94,6 +75,7 @@ namespace sPeachVoice
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             //regisztrációra átvisz
+            regForm = new registerForm(main);
             regForm.Show();
         }
         // textbox-ok beállításai eddig
@@ -177,13 +159,36 @@ namespace sPeachVoice
                 isPasswordOk = false;
             }
         }
+        //visszakapott adat levizsgálása, hogy sikerült-e a login
+        void receiver()
+        {
+            main.connection.listen();
+        }
 
         private void logInForm_Load(object sender, EventArgs e)
         {
-            Connection.onResponse response = onResponse;
-            connection = new Connection(response);
-            regForm = new registerForm(connection);
-            mainForm = new mainForm(defaultAvatar, "Available", Color.Green, connection);
+            main.connection.openConnection();
+            Thread receiveData = new Thread(receiver);
+            receiveData.Start();
+        }
+        public void onLogIn(int loginResponse, uint id)
+        {
+            userIdFromServer = id;
+            if (loginResponse == 1)
+            {
+                this.Invoke((MethodInvoker)(() =>
+                {
+                    mainForm mainForm = new mainForm(defaultAvatar, "Available", Color.Green, main);
+                    mainForm.Show();
+                }));
+            }
+            else
+            {
+                label1.Invoke((MethodInvoker)(() =>
+                {
+                    label1.Text = "Wrong username or password";
+                }));
+            }
         }
     }
 }

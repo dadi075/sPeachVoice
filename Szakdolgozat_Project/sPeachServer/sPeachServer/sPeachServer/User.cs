@@ -14,5 +14,6 @@ namespace sPeachServer
         public string username;
         public byte[] picture;
         public TcpClient tcpClient;
+        public NetworkStream networkStream;
     }
 }

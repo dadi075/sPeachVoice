@@ -164,6 +164,7 @@
             this.MinimizeBox = false;
             this.Name = "registerForm";
             this.Text = "Register";
+            this.Load += new System.EventHandler(this.registerForm_Load);
             this.Click += new System.EventHandler(this.registerForm_Click);
             this.ResumeLayout(false);
             this.PerformLayout();

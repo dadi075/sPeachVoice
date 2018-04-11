@@ -8,15 +8,21 @@ namespace sPeachVoice
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
+            new Main();
+        }
+    }
+    public class Main
+    {
+        public Connection connection = new Connection();
+
+        public Main()
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new logInForm());
+            Application.Run(new LogInForm(this));
         }
     }
 }

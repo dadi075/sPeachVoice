@@ -10,8 +10,7 @@ namespace sPeachVoice
     {
         login_Data, //username + password
         registration_Data, // username + email + password
-        user_Data, //username + user picture
         text_Message,
-        voice_Message
+        logout
     }
 }

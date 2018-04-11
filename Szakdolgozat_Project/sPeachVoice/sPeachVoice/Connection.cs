@@ -9,26 +9,66 @@ using System.IO;
 
 namespace sPeachVoice
 {
-    class Connection
+    public class Connection
     {
         private string ipAddress = "127.0.0.1";
         private int port = 1234;
-        public TcpClient tcpClient = new TcpClient();
-        private onResponse response;
+        private TcpClient tcpClient;
+        private NetworkStream networkStream;
+        private BinaryReader binaryReader;
+        public BinaryWriter binaryWriter;
+
+        public LogInForm logInForm;
+        public registerForm regForm;
+        public chat_form chatForm;
+        public mainForm mainForm;
 
 
-        public delegate void onResponse();
-
-        //konstruktor, ha létrehozunk egy példányt, akkor csatlakozik
-        public Connection(onResponse response)
+        public void openConnection()
         {
-            this.response = response;
+            tcpClient = new TcpClient();
             tcpClient.Connect(ipAddress, port);
-            response();
+            networkStream = tcpClient.GetStream();
+            binaryReader = new BinaryReader(networkStream);
+            binaryWriter = new BinaryWriter(networkStream);
         }
-        /*public void CloseConnection()
+        public void closeConnection()
         {
             tcpClient.Close();
-        }*/
+            networkStream.Close();
+            binaryReader.Close();
+            binaryWriter.Close();
+        }
+        public void listen()
+        {
+            if (tcpClient.Connected)
+            {
+                while (true)
+                {
+                    int messageType = binaryReader.ReadByte();
+
+                    switch ((ServerMessageType)messageType)
+                    {
+                        case ServerMessageType.login_response:
+                            int loginResponse = binaryReader.ReadByte();
+                            uint id = binaryReader.ReadByte();
+                            logInForm.onLogIn(loginResponse, id);
+                            break;
+                        case ServerMessageType.register_response:
+                            int registerResponse = binaryReader.ReadByte();
+                            regForm.onRegister(registerResponse);
+                            break;
+                        case ServerMessageType.chat_message:
+                            string message = binaryReader.ReadString();
+                            chatForm.onMessageReceived(message);
+                            break;
+                        case ServerMessageType.logout_response:
+                            int logoutResponse = binaryReader.ReadByte();
+                            mainForm.onLogout(logoutResponse);
+                            break;
+                    }
+                }
+            }
+        }
     }
 }

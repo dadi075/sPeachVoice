@@ -10,8 +10,7 @@ namespace sPeachVoice
     {
         login_response,
         register_response,
-        all_user_data,
         chat_message,
-        voice_message
+        logout_response
     }
 }

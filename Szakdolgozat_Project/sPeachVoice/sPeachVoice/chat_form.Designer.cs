@@ -33,12 +33,16 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.send_btn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Coral;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.listBox1);
             this.panel1.Controls.Add(this.send_btn);
             this.panel1.Controls.Add(this.textBox1);
@@ -77,6 +81,28 @@
             this.textBox1.Size = new System.Drawing.Size(367, 26);
             this.textBox1.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(385, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 20);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Voice";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightSalmon;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(385, 36);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Connect";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // chat_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,5 +126,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button send_btn;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }

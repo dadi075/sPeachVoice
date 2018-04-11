@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(optionForm));
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,12 +42,14 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.DarkSalmon;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(12, 111);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(109, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Select Picture";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
@@ -79,12 +82,14 @@
             // 
             // submit_btn
             // 
+            this.submit_btn.BackColor = System.Drawing.Color.DarkSalmon;
+            this.submit_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.submit_btn.Location = new System.Drawing.Point(448, 265);
             this.submit_btn.Name = "submit_btn";
             this.submit_btn.Size = new System.Drawing.Size(75, 23);
             this.submit_btn.TabIndex = 4;
             this.submit_btn.Text = "Submit";
-            this.submit_btn.UseVisualStyleBackColor = true;
+            this.submit_btn.UseVisualStyleBackColor = false;
             this.submit_btn.Click += new System.EventHandler(this.submit_btn_Click);
             // 
             // label4
@@ -100,9 +105,10 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
+            this.radioButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton1.Location = new System.Drawing.Point(17, 182);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(68, 17);
+            this.radioButton1.Size = new System.Drawing.Size(67, 17);
             this.radioButton1.TabIndex = 6;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Available";
@@ -112,9 +118,10 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton2.Location = new System.Drawing.Point(16, 206);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(48, 17);
+            this.radioButton2.Size = new System.Drawing.Size(47, 17);
             this.radioButton2.TabIndex = 7;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Busy";
@@ -124,9 +131,10 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
+            this.radioButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.radioButton3.Location = new System.Drawing.Point(16, 230);
             this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(51, 17);
+            this.radioButton3.Size = new System.Drawing.Size(50, 17);
             this.radioButton3.TabIndex = 8;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Away";
@@ -137,6 +145,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Coral;
             this.ClientSize = new System.Drawing.Size(535, 300);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
@@ -148,6 +157,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "optionForm";

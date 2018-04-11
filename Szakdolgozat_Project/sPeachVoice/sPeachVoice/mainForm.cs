@@ -12,31 +12,29 @@ namespace sPeachVoice
 {
     public partial class mainForm : Form
     {
-        Connection conn;
-
-        public mainForm(Bitmap avatar, string stateName, Color stateColor, Object con)
+        public mainForm(Bitmap avatar, string stateName, Color stateColor, Main main)
         {
             InitializeComponent();
             setAvatar(avatar);
             setState(stateName, stateColor);
-            conn = (Connection)con;
-            chat_form = new chat_form(conn);
-            option_form = new optionForm(conn);
+            this.main = main;
+            idFromServer = LogInForm.userIdFromServer;
         }
-        
-        public static string usernameToShow;
 
-        chat_form chat_form;
-        optionForm option_form;
-        
+        public static string usernameToShow;
+        static uint idFromServer;
+        private Main main;
+
 
         private void servers_btn_Click(object sender, EventArgs e)
         {
+            chat_form chat_form = new chat_form(main);
             chat_form.Show();
         }
 
         private void options_btn_Click(object sender, EventArgs e)
         {
+            optionForm option_form = new optionForm(main);
             option_form.Show();
             this.Close();
         }
@@ -45,7 +43,7 @@ namespace sPeachVoice
         private void mainForm_Load(object sender, EventArgs e)
         {
             //név hozzáad
-            name.Text = logInForm.username;
+            name.Text = LogInForm.username;
             usernameToShow = name.Text;
 
             //kép hozzáad a listához
@@ -59,7 +57,7 @@ namespace sPeachVoice
             //item előkészítése képpel
             ListViewItem item = new ListViewItem();
             item.ImageIndex = 0;
-            item.Text = logInForm.username;
+            item.Text = LogInForm.username;
             availableListView.Items.Add(item);
 
         }
@@ -72,6 +70,22 @@ namespace sPeachVoice
         {
             label2.Text = txt;
             pictureBox2.BackColor = color;
+        }
+
+        private void signout_btn_Click(object sender, EventArgs e)
+        {
+            main.connection.binaryWriter.Write((byte)UserMessageType.logout);
+            main.connection.binaryWriter.Write(1);
+            main.connection.binaryWriter.Write(idFromServer);
+            main.connection.binaryWriter.Flush();
+        }
+        public void onLogout(int logout_resp)
+        {
+            if (logout_resp == 1)
+            {
+                main.connection.closeConnection();
+                this.Close();
+            }
         }
     }
 }

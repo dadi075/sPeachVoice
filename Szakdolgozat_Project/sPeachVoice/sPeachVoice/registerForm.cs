@@ -9,30 +9,24 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Threading;
 
 namespace sPeachVoice
 {
     public partial class registerForm : Form
     {
-        static Connection connection;
-        public registerForm(Object con)
+        public registerForm(Main main)
         {
             InitializeComponent();
-            Connection.onResponse response = onResponse;
-            connection = (Connection)con;
-
+            this.main = main;
+            main.connection.regForm = this;
         }
+        private Main main;
         //ellenőrzésnél segítő mezők
         static bool isUsernameOk = false;
         static bool isEmailOk = false;
         static bool isPasswordOk = false;
         static bool isPasswordConfOk = false;
-
-
-        void onResponse()
-        {
-            Console.WriteLine("asd");
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -44,35 +38,17 @@ namespace sPeachVoice
                 &&
                 isPasswordConfOk == true)
             {
-                
+
                 Hash sha = new Hash();
 
-                BinaryWriter binaryWriter = new BinaryWriter(connection.tcpClient.GetStream());
-                //adatok küldése
-                
-                binaryWriter.Write((byte)UserMessageType.registration_Data);
-                binaryWriter.Write(username_text.Text);
-                binaryWriter.Write(email_text.Text);
-                binaryWriter.Write(sha.sha256(password_text.Text));
-                binaryWriter.Flush();
-
-                //vissza kapott adat levizsgálása, hogy sikerült-e a regisztráció
-                using (BinaryReader binaryReader = new BinaryReader(connection.tcpClient.GetStream())) {
-                    int i = binaryReader.ReadInt32();
-                    if ((ServerMessageType)i == ServerMessageType.register_response)
-                    {
-                        if (binaryReader.ReadInt32() == 1)
-                        {
-                            this.Close();
-                        }
-                        else
-                        {
-                            label1.Text = "Something gone wrong, try again later.";
-                        }
-                    }
-                }
+                main.connection.binaryWriter.Write((byte)UserMessageType.registration_Data);
+                main.connection.binaryWriter.Write(username_text.Text);
+                main.connection.binaryWriter.Write(email_text.Text);
+                main.connection.binaryWriter.Write(sha.sha256(password_text.Text));
+                main.connection.binaryWriter.Flush();
             }
         }
+
         //username
         private void textBox1_Click(object sender, EventArgs e)
         {
@@ -264,5 +240,28 @@ namespace sPeachVoice
         {
             this.Close();
         }
+        public void onRegister(int registerResponse)
+        {
+              if (registerResponse == 1)
+               {
+                    label1.Text = "Registration Successful. Please click on Cancel for Login!";
+            }
+               else
+               {
+                   label1.Text = "Something gone wrong, try again later.";
+               }
+        }
+        void receiver()
+        {
+            main.connection.listen();
+        }
+
+        private void registerForm_Load(object sender, EventArgs e)
+        {
+            
+            Thread receiverThread = new Thread(receiver);
+            receiverThread.Start();
+        }
     }
 }
+

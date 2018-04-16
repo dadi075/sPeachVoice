@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
+using System.Collections.Concurrent;
 
 namespace sPeachServer
 {
@@ -19,6 +20,7 @@ namespace sPeachServer
         static NetworkStream networkStream;
         static BinaryReader binaryReader;
         static BinaryWriter binaryWriter;
+        static ConcurrentQueue<string> messageQueue = new ConcurrentQueue<string>();
 
         static void Main(string[] args)
         {
@@ -112,20 +114,21 @@ namespace sPeachServer
 
                         break;
                     case UserMessageType.text_Message:
-                        string chat_username = binaryReader.ReadString();
-                        string message = binaryReader.ReadString();
-                        string messageAndUsername = chat_username + ": " + message;
+                        string messageAndUsername = binaryReader.ReadString() + ": " + binaryReader.ReadString();
 
-                        foreach (var user in clients)
+                        messageQueue.Enqueue(messageAndUsername);
+
+                        Console.WriteLine(messageAndUsername);
+
+                        foreach (var user in clients.Values)
                         {
-                            networkStream = user.Value.tcpClient.GetStream();
-                            binaryWriter.Write((byte)ServerMessageTypes.chat_message);
-                            binaryWriter.Write(messageAndUsername);
-                            binaryWriter.Flush();
+                            foreach (var tmp in messageQueue) {
+                                networkStream = user.networkStream;
+                                binaryWriter.Write((byte)ServerMessageTypes.chat_message);
+                                binaryWriter.Write(tmp);
+                                binaryWriter.Flush();
+                            }
                         }
-                        chat_username = "";
-                        message = "";
-                        messageAndUsername = "";
                         break;
 
                     case UserMessageType.logout:

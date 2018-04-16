@@ -10,6 +10,7 @@ namespace sPeachVoice
     class ListenerThreadState
     {
         public IPEndPoint EndPoint { get; set; }
+        public IPEndPoint EndPointListener { get; set; }
         public INetworkChatCodec Codec { get; set; }
     }
 }

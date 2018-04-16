@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using NAudio.Wave;
 using System.Net;
 using System.Net.Sockets;
+using System.Text.RegularExpressions;
 
 namespace sPeachVoice
 {
@@ -31,11 +32,12 @@ namespace sPeachVoice
         private bool connected;
         ALawChatCodec aLawChatCodec = new ALawChatCodec();
         WaveIn waveIn = null;
-        DirectSoundOut waveout = null;
         BufferedWaveProvider waveProvider;
         UdpClient sendVoice;
         UdpClient receiveVoice;
         IWavePlayer waveOut;
+        IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 60001);
+        IPEndPoint endPoint2 = new IPEndPoint(IPAddress.Any, 60001);
 
         private void send_btn_Click(object sender, EventArgs e)
         {
@@ -73,10 +75,12 @@ namespace sPeachVoice
             if (this.listBox1.InvokeRequired)
             {
                 listBox1.Invoke(new Action(() => listBox1.Items.Add(messageAndUsername)));
+                listBox1.Invoke(new Action(() => listBox1.SelectedIndex = listBox1.Items.Count - 1));
             }
             else
             {
                 listBox1.Items.Add(messageAndUsername);
+                listBox1.SelectedIndex = listBox1.Items.Count - 1;
             }
         }
 
@@ -84,10 +88,8 @@ namespace sPeachVoice
         {
             if (!connected)
             {
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Broadcast, 60001);
-                IPEndPoint endpoint2 = new IPEndPoint(IPAddress.Any, 60001);
                 int inputDeviceNumber = 0;
-                connectVoice(endPoint, inputDeviceNumber, aLawChatCodec);
+                connectVoice(endPoint, endPoint2, inputDeviceNumber, aLawChatCodec);
                 button1.Text = "Disconnect";
             }
             else
@@ -96,7 +98,7 @@ namespace sPeachVoice
                 button1.Text = "Connect";
             }
         }
-        void connectVoice(IPEndPoint endPoint, int inputDevice, INetworkChatCodec networkChatCodec)
+        void connectVoice(IPEndPoint endPoint, IPEndPoint endpointListener, int inputDevice, INetworkChatCodec networkChatCodec)
         {
             waveIn = new WaveIn();
             waveIn.BufferMilliseconds = 50;
@@ -107,13 +109,9 @@ namespace sPeachVoice
 
             sendVoice = new UdpClient();
             receiveVoice = new UdpClient();
-            sendVoice.EnableBroadcast = true;
-            receiveVoice.EnableBroadcast = true;
 
             receiveVoice.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.Broadcast, true);
-            receiveVoice.Client.Bind(endPoint);
-
-            sendVoice.Connect(endPoint);
+            receiveVoice.Client.Bind(endpointListener);
 
             waveOut = new WaveOut();
             waveProvider = new BufferedWaveProvider(networkChatCodec.RecordFormat);
@@ -121,7 +119,7 @@ namespace sPeachVoice
             waveOut.Play();
 
             connected = true;
-            var state = new ListenerThreadState { Codec = networkChatCodec, EndPoint = endPoint };
+            var state = new ListenerThreadState { Codec = networkChatCodec, EndPoint = endPoint, EndPointListener = endpointListener };
             ThreadPool.QueueUserWorkItem(listenerThreadState, state);
         }
         void disconnectVoice()
@@ -144,17 +142,24 @@ namespace sPeachVoice
         void waveIn_DataAvailable(object sender, WaveInEventArgs e)
         {
             byte[] encoded = aLawChatCodec.Encode(e.Buffer, 0, e.BytesRecorded);
-            sendVoice.Send(encoded, encoded.Length);
+            sendVoice.Send(encoded, encoded.Length, endPoint);
         }
         void listenerThreadState(object state)
         {
             var listenerThreadState = (ListenerThreadState)state;
-            var endPoint = listenerThreadState.EndPoint;
+            var endPoint2 = listenerThreadState.EndPointListener;
             while (connected)
             {
-                byte[] b = receiveVoice.Receive(ref endPoint);
-                byte[] decoded = listenerThreadState.Codec.Decode(b, 0, b.Length);
-                waveProvider.AddSamples(decoded, 0, decoded.Length);
+                try
+                {
+                    byte[] b = receiveVoice.Receive(ref endPoint2);
+                    byte[] decoded = listenerThreadState.Codec.Decode(b, 0, b.Length);
+                    waveProvider.AddSamples(decoded, 0, decoded.Length);
+                }
+                catch
+                {
+                   
+                }
             }
         }
     }

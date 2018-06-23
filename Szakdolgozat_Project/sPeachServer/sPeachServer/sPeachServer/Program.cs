@@ -115,9 +115,10 @@ namespace sPeachServer
                         break;
                     case UserMessageType.text_Message:
                         string messageAndUsername = binaryReader.ReadString() + ": " + binaryReader.ReadString();
-
+                        string dateTime = DateTime.Now.ToString();
                         messageQueue.Enqueue(messageAndUsername);
-
+                        string command_chat = "INSERT INTO text_conversation (id, content, timestamp) VALUES (NULL, '"+messageAndUsername+"', '"+dateTime+"');";
+                        sql.executeInsert(command_chat);
                         Console.WriteLine(messageAndUsername);
 
                         foreach (var user in clients.Values)

@@ -28,7 +28,6 @@ namespace sPeachVoice
         private Main main;
         string chat_username;
 
-        //hang
         private bool connected;
         ALawChatCodec aLawChatCodec = new ALawChatCodec();
         WaveIn waveIn = null;

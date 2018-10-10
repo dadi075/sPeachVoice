@@ -59,6 +59,7 @@
       <DependentUpon>chat_form.cs</DependentUpon>
     </Compile>
     <Compile Include="Connection.cs" />
+    <Compile Include="FieldCheck.cs" />
     <Compile Include="Hash.cs" />
     <Compile Include="INetworkChatCodec.cs" />
     <Compile Include="ListenerThreadState.cs" />

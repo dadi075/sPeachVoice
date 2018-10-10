@@ -135,7 +135,7 @@
             this.label1.Size = new System.Drawing.Size(0, 16);
             this.label1.TabIndex = 10;
             // 
-            // logInForm
+            // LogInForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -152,7 +152,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "logInForm";
+            this.Name = "LogInForm";
             this.Text = "Log In";
             this.Load += new System.EventHandler(this.logInForm_Load);
             this.Click += new System.EventHandler(this.logInForm_Click);

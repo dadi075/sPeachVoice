@@ -31,6 +31,7 @@ namespace sPeachVoice
         registerForm regForm;
 
         Hash sha = new Hash();
+        FieldCheck fieldCheck = new FieldCheck();
 
         bool isUsernameOk = false;
         bool isPasswordOk = false;
@@ -131,18 +132,8 @@ namespace sPeachVoice
         */
         private void username_text_TextChanged(object sender, EventArgs e)
         {
-            //csak kis és nagybetű + szám
-            Regex usernameRgx = new Regex(@"^[a-z0-9_-]{3,15}$");
             username = username_text.Text;
-
-            if (usernameRgx.IsMatch(username))
-            {
-                isUsernameOk = true;
-            }
-            else
-            {
-                isUsernameOk = false;
-            }
+            isUsernameOk = fieldCheck.checkUsername(username);
         }
 
         private void pass_text_TextChanged(object sender, EventArgs e)
